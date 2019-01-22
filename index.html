@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery</title>
+
+    <link rel="stylesheet" href="css/demo.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 900px !important;
+        font-family: Helvetica,Arial,"Hiragino Sans GB","Microsoft Yahei","微软雅黑",STHeiti,"华文细黑",sans-serif;
+      }
+        .wrap {
+          /*background-color: red;*/
+          height: 380px;
+          width: 300px;
+          position: relative;
+          color: #000;
+        }
+
+        #scrollBox {
+            height: 400px;
+            width: 300px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        #scrollBox #con1,
+        #con2 {
+            width: 300px;
+          display: flex;
+          flex-direction: column;
+
+        }
+
+        #scrollBox span {
+            font-size: 2rem;
+            height: 55px;
+            line-height:60px;
+            text-align: center;
+            z-index: 111;
+            position: relative;
+          white-space: nowrap;
+        }
+
+      #spactil{
+        display: none;
+        position: absolute;
+        width: 100%;
+        top:158px;
+        left:0px;
+        text-align: center;
+        line-height: 77px;
+        font-size: 2.2rem;
+        z-index: 112;
+        color: #fff;
+      }
+
+      /*遮罩层*/
+      .masking{
+        width: 100%;
+        height:100%;
+        position: fixed;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 113;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+      }
+      .masking .wrap{
+        width: 70%;
+        height:80%;
+        background-color: #Fff;
+        border-radius: 5px;
+        position: relative;
+      }
+      .masking .wrap h2{
+        text-align: center;
+        font-size: 2rem;
+        color: orangered;
+        margin-top: 30px;
+        font-weight: bold;
+      }
+      .masking .wrap img{
+        position: absolute;
+        right: 30px;
+        top:20px;
+        width: 40px;
+        height:40px;
+      }
+      .masking .wrap .content{
+        width: 70%;
+        height:65%;
+        border: 1px #eee solid;
+        margin: 20px auto;
+        padding: 20px;
+      }
+      .masking .wrap .content #marquee6{
+        width:100%;
+        height:100%;
+        overflow:hidden;
+        background:#fff;
+      }
+      .masking .wrap .content #marquee6 ul li{
+        padding:0 10px;
+        line-height:50px;
+        height:50px;
+        text-align: center;
+        overflow:hidden;
+        font-size: 20px;
+      }
+      .masking .wrap .control{
+        width: 360px;
+        margin: 0 auto;
+        display: flex;
+      }
+      .masking .wrap .control .controlTop{
+        width: 170px;
+        height:50px;
+        background-color: red;
+        margin-right: 20px;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 5px;
+      }
+      .masking .wrap .control .controlTop:active{
+        background-color: #999;
+      }
+      .masking .wrap .control .controlBottom{
+        width: 170px;
+        height:50px;
+        background-color: red;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 5px;
+      }
+      .masking .wrap .control .controlBottom:active{
+        background-color: #999;
+      }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;">
+    <div class="wrap">
+        <!-- 开始抽奖 -->
+        <div id="scrollBox">
+            <div id="con1">
+                <!-- <span>我是测试内容1！！
+				</span>
+                <span>我是测试内容2！！
+				</span>
+                <span>我是测试内容3！！
+				</span>
+                <span>我是测试内容4！！
+				</span>
+                <span>我是测试内容5！！
+				</span>
+                <span>我是测试内容6！！
+				</span>
+                <span>我是测试内容7！！
+				</span>
+                <span>我是测试内容8！！
+				</span>
+                <span>我是测试内容9！！</span> -->
+            </div>
+        </div>
+
+      <span id="spactil">
+        <span id="spactilSpan" style="background-color: #ed2028;">
+我是中奖的数据
+        </span>
+
+      </span>
+    </div></a>
+    <div class="masking" id="masking">
+      <div class="wrap">
+        <h2>本次中奖用户</h2>
+        <a href="javascript:;"><img src="./images/close.png" alt="" onclick="closeMasking()"></a>
+        <div class="content">
+          <div id="marquee6">
+            <ul>
+              <li><a href="javascript:;" title="jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果">jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果</a></li>
+              <li><a href="javascript:;" title="制作CSS3和HTML5的一个单页网站模板">制作CSS3和HTML5的一个单页网站模板</a></li>
+
+              <li><a href="javascript:;" title="jquery 幻灯片切换应用一个HTML5的幻灯片">jquery 幻灯片切换应用一个HTML5的幻灯片</a></li>
+              <li><a href="javascript:;" title="jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3">jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3</a></li>
+              <li><a href="javascript:;" title="用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox">用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox</a></li>
+              <li><a href="javascript:;" title="jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果">jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果</a></li>
+              <li><a href="javascript:;" title="制作CSS3和HTML5的一个单页网站模板">制作CSS3和HTML5的一个单页网站模板</a></li>
+
+              <li><a href="javascript:;" title="jquery 幻灯片切换应用一个HTML5的幻灯片">jquery 幻灯片切换应用一个HTML5的幻灯片</a></li>
+              <li><a href="javascript:;" title="jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3">jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3</a></li>
+              <li><a href="javascript:;" title="用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox">用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox</a></li>
+              <li><a href="javascript:;" title="jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果">jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果</a></li>
+              <li><a href="javascript:;" title="制作CSS3和HTML5的一个单页网站模板">制作CSS3和HTML5的一个单页网站模板</a></li>
+
+              <li><a href="javascript:;" title="jquery 幻灯片切换应用一个HTML5的幻灯片">jquery 幻灯片切换应用一个HTML5的幻灯片</a></li>
+              <li><a href="javascript:;" title="jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3">jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3</a></li>
+              <li><a href="javascript:;" title="用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox">用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox</a></li>
+              <li><a href="javascript:;" title="jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果">jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果</a></li>
+              <li><a href="javascript:;" title="制作CSS3和HTML5的一个单页网站模板">制作CSS3和HTML5的一个单页网站模板</a></li>
+
+              <li><a href="javascript:;" title="jquery 幻灯片切换应用一个HTML5的幻灯片">jquery 幻灯片切换应用一个HTML5的幻灯片</a></li>
+              <li><a href="javascript:;" title="jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3">jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3</a></li>
+              <li><a href="javascript:;" title="用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox">用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox</a></li>
+              <li><a href="javascript:;" title="jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果">jquery HTML5 幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果</a></li>
+              <li><a href="javascript:;" title="制作CSS3和HTML5的一个单页网站模板">制作CSS3和HTML5的一个单页网站模板</a></li>
+
+              <li><a href="javascript:;" title="jquery 幻灯片切换应用一个HTML5的幻灯片">jquery 幻灯片切换应用一个HTML5的幻灯片</a></li>
+              <li><a href="javascript:;" title="jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3">jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3</a></li>
+              <li><a href="javascript:;" title="用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox">用div+css制作纯CSS下拉菜单，兼容IE6 IE7 IE8及以上 Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="control">
+          <a href="javascript:void(0);" id="goUM">
+            <div class="controlTop">
+              鼠标长按加速上移
+            </div>
+          </a>
+          <a href="javascript:void(0);" id="goDM">
+            <div class="controlBottom">
+              鼠标长按加速下移
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/Marquee.js"></script>
+    <script type="text/javascript">
+      //Marquee
+      $('#marquee6').kxbdSuperMarquee({
+        isMarquee:true,
+        isEqual:false,
+        scrollDelay:20,
+        controlBtn:{up:'#goUM',down:'#goDM'},
+        direction:'up'
+      });
+        let arr1 = ["数据照相机","笔记本电脑Mac","笔记本电脑ThinkPad S3","Iphone XS尊享版","华为保时捷 限量版","数据照相机","笔记本电脑Mac","笔记本电脑ThinkPad S3","Iphone XS尊享版","华为保时捷 限量版","数据照相机","笔记本电脑Mac","笔记本电脑ThinkPad S3","Iphone XS尊享版","华为保时捷 限量版"]
+        let con1 = $("#con1")
+        con1.html("")
+        for (let i = 0; i < arr1.length; i++) {
+            con1.append(` <span>${arr1[i]}</span>`)
+        }
+        status = true
+        let maskingStatus = false
+        var area = document.getElementById('scrollBox');
+        var lHeight = 25;
+        var time = 5;
+        area.innerHTML += area.innerHTML;
+        area.scrollTop = 0;
+        var timer;
+        let num = 0
+
+        function scrollMove() {
+          if (maskingStatus){
+            return
+          }
+            status = false
+            area.scrollTop++;
+            timer = setInterval("scrollUp()", 30);
+        }
+
+        function scrollUp() {
+          $('#spactil').hide()
+            if (!isStop) {
+                if (num < 20) {
+                    num++
+                }
+            } else {
+                if (num > 1) {
+                    num--
+                }
+            }
+            area.scrollTop = area.scrollTop + num;
+            if (area.scrollTop == 0) {
+                area.scrollTop = 2
+            }
+            if (area.scrollTop >= area.scrollHeight / 2) {
+                //判断滚动高度,当滚动高度大于area本身的高度时，使其回到原点重新滚动
+                area.scrollTop = 0;
+            }
+          if (isStop && area.scrollTop % 55 < 5 && num == 1) {
+            isStop = false
+            area.scrollTop = area.scrollTop
+            // +25
+            clearTimeout(timer)
+            $("#masking").css({ opacity: "0",height:"0%"}).show().animate({ opacity: "1",height:"100%"},500, "swing");
+            maskingStatus = true
+            $('#spactil').show()
+            $('#spactilSpan')[0].innerHTML = '华为保时捷 限量版'
+          }
+        }
+
+        function closeMasking() {
+          $("#masking").css({ opacity: "1",height:"100%"}).show().animate({ opacity: "0",height:"0%"},500, "swing");
+          maskingStatus = false
+        }
+        document.getElementById('masking').onclick = function (event) {
+          if (event.target == this){
+            $("#masking").css({ opacity: "1",height:"100%"}).show().animate({ opacity: "0",height:"0%"},500, "swing");
+          }
+        }
+        let isStop = false
+        document.onkeyup = function(e) {
+            status = true
+            if (e.keyCode == '32' && status) {
+                scrollMove()
+            } else if (e.keyCode == '13') {
+                isStop = true
+            } else if (e.keyCode == '27' && maskingStatus) {
+              $("#masking").css({ opacity: "1",height:"100%"}).show().animate({ opacity: "0",height:"0%"},500, "swing");
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
